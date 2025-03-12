@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdeee7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Cho phép chiều cao của body thay đổi theo nội dung */
+    margin: 0;
+    padding-bottom: 20px; /* Đảm bảo có khoảng trống dưới trang */
+}
+
+.container {
+    display: flex;
+    width: 85%; /* Giảm chiều rộng của container để vừa màn hình điện thoại */
+    max-width: 1200px;
+    background-color: #ffece1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column; /* Xếp các phần tử theo chiều dọc trên điện thoại */
+    align-items: center;
+}
+
+.left-box, .right-box {
+    flex: 1;
+    padding: 20px;
+    width: 100%; /* Đảm bảo các phần tử chiếm toàn bộ chiều ngang */
+}
+
+.left-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.right-box a {
+    word-wrap: break-word;
+    max-width: 100%;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-height: 70vh; /* Giới hạn chiều cao video để không bị tràn */
+}
+
+button {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.like-btn {
+    background-color: #ff6666;
+    color: white;
+}
+
+.comment-btn {
+    background-color: #ddd;
+}
+
+.share-btn {
+    background-color: #ffcc99;
+}
+
+/* 🌟 Căn giữa và điều chỉnh chiều dài cho điện thoại 🌟 */
+@media screen and (max-width: 768px) {
+    body {
+        align-items: flex-start; /* Căn trên cho phần tử */
+        height: auto; /* Cho phép chiều cao thay đổi */
+    }
+
+    .container {
+        width: 85%;
+        margin-top: 30px; /* Thêm khoảng cách ở đầu trang */
+    }
+
+    .left-box video {
+        max-height: 70vh; /* Giới hạn chiều cao video để phù hợp */
+        width: 100%;
+    }
+
+    /* Cập nhật cho mã QR */
+    .right-box img {
+        width: 100px; /* Kích thước mã QR bình thường trên điện thoại */
+        height: auto;
+        display: block;
+        margin: 20px auto;
+    }
+}
+
+/* Khi mở trên laptop (hoặc màn hình rộng hơn) */
+@media screen and (min-width: 769px) {
+    .right-box img {
+        width: 150px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}

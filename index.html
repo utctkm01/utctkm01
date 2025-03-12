@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTC TKM 01</title>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTC TKM 01</title>
+
+  <!-- Thêm favicon vào đây -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Hoặc nếu bạn dùng PNG -->
+  <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Ô bên trái (chứa video) -->
+    <div class="left-box">
+      <video controls>
+        <source src="video.mp4" type="video/mp4">
+        <source src="video.webm" type="video/webm">
+        Trình duyệt của bạn không hỗ trợ video.
+      </video>
+    </div>
+
+    <!-- Ô bên phải -->
+    <div class="right-box">
+      <h2>UTC TKM 01</h2>
+      <button class="like-btn" onclick="likePage()">👍 Like Page MISUMI VN</button>
+      <button class="like-btn" onclick="likePost()">❤️ Like và Comment bài viết</button>
+      <button class="share-btn" onclick="share()">🔗 Chia Sẻ</button>
+
+      <p>➡ <b>Link bài viết của nhóm.</b> ❤️</p>
+      <a href="https://www.facebook.com/watch/?v=523640080369208&rdrid=YmntCHiJ4IyZXvLU" target="_blank">
+        https://www.facebook.com/watch/?v=523640080369208&rdrid=YmntCHiJ4IyZXvLU
+      </a>
+      <img src="qr-code.png" alt="QR Code" width="40" style="margin-left: 10px;">
+
+      <p>➡ <b>Cách thức like, share, cmt:</b></p>
+      <p>Bước 1: Click vào link hoặc quét mã QR.</p>
+      <p>Bước 2: Bấm Like 👍 trang MISUMI trước khi thực hiện bước 3.</p>
+      <p>Bước 3: Thả 1 tym ❤️, 1 comment 💬 và 1 bài share 🔗 với hashtag:</p>
+
+      <p id="share-content">#teamUTC_TKM_01 <br>#cuocthitkmtudonghoa <br>#misumivietnam</p>
+
+      <p>💛 Cả nhóm cảm ơn mọi người đã ủng hộ rất nhiều ạ! ❤️</p>
+    </div>
+  </div>
+
+<script>
+  // Hàm kiểm tra xem có đang dùng thiết bị di động hay không
+  function isMobile() {
+    return /android/i.test(navigator.userAgent) || /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function showThanksAndRedirect(url) {
+    alert("Cảm ơn bạn đã ủng hộ nhóm UTC_TKM_01! ❤️");
+    if (isMobile()) {
+      // Trên điện thoại, kiểm tra xem có ứng dụng Facebook chưa
+      var isFacebookApp = /fb[0-9]{4,5}/.test(navigator.userAgent);
+      if (isFacebookApp) {
+        // Nếu có ứng dụng Facebook, mở trực tiếp trong ứng dụng
+        window.location.href = url;
+      } else {
+        // Nếu không có ứng dụng Facebook, mở tab mới
+        window.open(url, "_blank");
+      }
+    } else {
+      // Trên PC, mở trong tab mới
+      window.open(url, "_blank");
+    }
+  }
+
+  function likePage() {
+    var url = "https://www.facebook.com/MISUMIVN"; // URL cho PC (fanpage)
+    if (isMobile()) {
+      // Thay '144307730564646' bằng Page ID thực của fanpage MISUMI
+      url = "fb://page/144307730564646";
+      url = "https://www.facebook.com/MISUMIVN";
+    }
+    showThanksAndRedirect(url);
+  }
+
+  function likePost() {
+    var url = "https://www.facebook.com/watch/?v=523640080369208"; // URL cho PC (bài viết)
+    if (isMobile()) {
+      // Sử dụng Post ID thực, ví dụ "523640080369208"
+      url = "fb://post/523640080369208";
+      url = "https://www.facebook.com/watch/?v=523640080369208";
+    }
+    showThanksAndRedirect(url);
+  }
+
+  function share() {
+    // Nội dung cần copy vào clipboard
+    var textToCopy = "#teamUTC_TKM_01\n#cuocthitkmtudonghoa\n#misumivietnam";
+
+    // Tạo một input tạm thời để copy nội dung
+    var tempInput = document.createElement("textarea");
+    tempInput.value = textToCopy;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    alert("Đã copy nội dung chia sẻ vào clipboard! 📋\nBạn có thể dán vào bài viết của mình.\r\nCảm ơn bạn đã ủng hộ nhóm UTC_TKM_01! ❤️");
+
+    var url = "https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/watch/?v=523640080369208&rdrid=YmntCHiJ4IyZXvLU"; // URL chia sẻ cho PC
+    if (isMobile()) {
+      url = "fb://sharer.php?u=https://www.facebook.com/watch/?v=523640080369208&rdrid=YmntCHiJ4IyZXvLU";  // URL chia sẻ cho thiết bị di động
+	  url = "https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/watch/?v=523640080369208&rdrid=YmntCHiJ4IyZXvLU";
+    }
+    window.open(url, "_blank");
+  }
+</script>
+
+</body>
+</html>
